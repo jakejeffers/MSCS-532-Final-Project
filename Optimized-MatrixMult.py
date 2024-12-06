@@ -22,13 +22,17 @@ B = np.random.rand(matrix_size, matrix_size).tolist()
 # Timing the unoptimized approach
 start_time = time.time()
 unoptimized_result = unoptimized_matrix_multiply(A, B)
-end_time = time.time()
+unoptimized_time = time.time() - start_time
 
-# Optimized matrix multiplication using NumPy
+# Convert lists to NumPy arrays for optimized approach
+A_np = np.array(A)
+B_np = np.array(B)
+
+# Timing the optimized approach
 start_time = time.time()
-optimized_result = np.dot(A, B)
-end_time = time.time()
+optimized_result = np.dot(A_np, B_np)
+optimized_time = time.time() - start_time
 
-print(f"Unoptimized Time for {matrix_size}x{matrix_size}: {end_time - start_time:.5f} seconds")
-print(f"Optimized Time for {matrix_size}x{matrix_size}: {end_time - start_time:.5f} seconds")
+print(f"Unoptimized Time for {matrix_size}x{matrix_size}: {unoptimized_time:.5f} seconds")
+print(f"Optimized Time for {matrix_size}x{matrix_size}: {optimized_time:.5f} seconds")
 
